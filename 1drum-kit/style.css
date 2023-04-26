@@ -2,56 +2,53 @@ html {
     font-size: 10px;
     background: url('./images/bacground3.jpg') bottom center;
     background-size: cover;
-
 }
 
-html,
-body {
+body,
+html {
+    font-family: sans-serif;
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
 }
 
 .keys {
     display: flex;
-    flex: 1 1 1rem;
-    min-height: 100vh;
-    align-items: center;
+    flex: 1;
     justify-content: center;
-
+    align-items: center;
+    min-height: 100vh;
 }
 
 .key {
-    border: .4rem solid rgba(30, 255, 10, 0.799);
-    border-radius: .5rem;
-    margin: 1rem;
-    font-size: 1.5rem;
-    padding: 1rem .5rem;
-    transition: all .07s ease;
+    border: .2rem solid #4ff009;
+    border-radius: .4rem;
+    margin: .7rem;
     width: 10rem;
+    color: #fff;
     text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.4);
-    text-shadow: 0 0 .5rem black;
+    padding: 1rem .5rem;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 .1rem #4ff009;
+    transition: all .07s ease;
 
 }
 
-.key kbd {
+.key span {
     display: block;
-    text-transform: uppercase;
-    font-size: 4rem;
 }
 
-.key .sound {
-    display: block;
-    color: #ffe100;
-    font-size: 1.2rem;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
+.key .letters {
+    font-size: 3rem;
+}
+
+.key .title {
+    color: #f0ec09;
 }
 
 .playing {
+    box-shadow: 0 0 1.5rem #fff707;
+    border-color: #ffc600;
+
     transform: scale(1.1);
-    border-color: #ffe100;
-    box-shadow: 0 0 1rem #ffe100;
 }
