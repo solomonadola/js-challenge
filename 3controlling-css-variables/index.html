@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>controlling css variables</title>
+    <style>
+        :root {
+            --base: #ffc600;
+            --spacing: 10px;
+            --blur: 10px;
+        }
+
+        html {
+            background: #00203fff;
+
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 100;
+            font-family: 'helvetica neue', sans-serif;
+
+        }
+
+        .container {
+            margin: auto;
+            text-align: center;
+        }
+
+
+        .h1 {
+            color: var(--base);
+        }
+
+        .controls {
+            margin: 50px;
+        }
+
+        div img {
+            filter: blur(var(--blur));
+            padding: var(--spacing);
+            background: var(--base);
+            border: 1px solid var(--base);
+            border-radius: 1rem;
+        }
+
+
+        input {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Update CSS Variables with <span class="h1">JS</span></h1>
+
+        <div class="controls">
+            <label>Spacing: </label><input type="range" name="spacing" min="0" max="200" value="10" data-sizing="px">
+            <label>Blur: </label><input type="range" name="blur" min="0" max="25" value="5" data-sizing="px">
+            <label>Color: </label><input type="color" name="base" value="#fdfafd">
+        </div>
+        <div>
+            <img src="./img2.jpg" alt="" width="800" class="img">
+        </div>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll('input');
+
+
+        function handleUpdate() {
+            const src = document.querySelector('div img').getAttribute('src')
+            const newImg = src == './img1.jpg' ? './img2.jpg' : './img1.jpg';
+            document.querySelector('div img').setAttribute('src', newImg)
+
+            const suffix = this.dataset.sizing || ''
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        <!-- inputs.forEach(input => input.addEventListener('mousemove', handleUpdate)); -->
+    </script>
+
+</body>
+
+</html>
